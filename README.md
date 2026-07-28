@@ -1,9 +1,7 @@
 # Sesh - TMUX Session Manager
 
 <p align="center">
-<pre>
 セッション
-</pre>
 </p>
 
 <p align="center">
