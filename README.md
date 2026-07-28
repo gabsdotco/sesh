@@ -1,10 +1,14 @@
 # Sesh - TMUX Session Manager
 
-```
+<p align="center">
+<pre>
 セッション
-```
+</pre>
+</p>
 
-A Go CLI tool for managing predefined TMUX sessions with workspaces, windows, and panels.
+<p align="center">
+  A Go CLI tool for managing predefined TMUX sessions with workspaces, windows, and panels.
+</p>
 
 ## Features
 
@@ -109,64 +113,65 @@ workspaces:
 
 ### Session Management
 
-| Command | Description |
-|---------|-------------|
-| `sesh create [name] -w [windows] --workspace [workspace]` | Create a session in a workspace |
-| `sesh spawn [name]` | Spawn a specific session |
-| `sesh kill [name]` | Kill a running session (works for untracked sessions too) |
-| `sesh kill --all` | Kill all running sessions |
-| `sesh kill --workspace [name]` | Kill all sessions in a workspace |
-| `sesh kill --dry-run` | Preview what `kill` would terminate |
-| `sesh delete [name]` | Delete a session definition |
-| `sesh move [name] --workspace [workspace]` | Move a session to a workspace |
-| `sesh move [name] --standalone` | Move a session to standalone (remove from workspace) |
-| `sesh rename [old] [new]` | Rename a session (updates config + tmux) |
-| `sesh show [name]` | Show session details (windows, panels, status) |
-| `sesh clone [name] [new-name]` | Clone a session definition |
-| `sesh add-window [session] [definition]` | Add a window to a session |
-| `sesh remove-window [session] [window]` | Remove a window from a session |
-| `sesh add-panel [session] [window]` | Add a panel to a window |
-| `sesh remove-panel [session] [window] [index]` | Remove a panel by index |
-| `sesh list` | List all sessions grouped by workspace (shows untracked sessions with ◌) |
-| `sesh list --running` | Show only running sessions |
-| `sesh list --workspace [name]` | Show only sessions in a workspace |
-| `sesh list --standalone` | Show only standalone sessions |
+| Command                                                   | Description                                                              |
+| --------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `sesh create [name] -w [windows] --workspace [workspace]` | Create a session in a workspace                                          |
+| `sesh spawn [name]`                                       | Spawn a specific session                                                 |
+| `sesh kill [name]`                                        | Kill a running session (works for untracked sessions too)                |
+| `sesh kill --all`                                         | Kill all running sessions                                                |
+| `sesh kill --workspace [name]`                            | Kill all sessions in a workspace                                         |
+| `sesh kill --dry-run`                                     | Preview what `kill` would terminate                                      |
+| `sesh delete [name]`                                      | Delete a session definition                                              |
+| `sesh move [name] --workspace [workspace]`                | Move a session to a workspace                                            |
+| `sesh move [name] --standalone`                           | Move a session to standalone (remove from workspace)                     |
+| `sesh rename [old] [new]`                                 | Rename a session (updates config + tmux)                                 |
+| `sesh show [name]`                                        | Show session details (windows, panels, status)                           |
+| `sesh clone [name] [new-name]`                            | Clone a session definition                                               |
+| `sesh add-window [session] [definition]`                  | Add a window to a session                                                |
+| `sesh remove-window [session] [window]`                   | Remove a window from a session                                           |
+| `sesh add-panel [session] [window]`                       | Add a panel to a window                                                  |
+| `sesh remove-panel [session] [window] [index]`            | Remove a panel by index                                                  |
+| `sesh list`                                               | List all sessions grouped by workspace (shows untracked sessions with ◌) |
+| `sesh list --running`                                     | Show only running sessions                                               |
+| `sesh list --workspace [name]`                            | Show only sessions in a workspace                                        |
+| `sesh list --standalone`                                  | Show only standalone sessions                                            |
 
 ### Workspace Management
 
-| Command | Description |
-|---------|-------------|
-| `sesh workspace create [name] --description "desc"` | Create a new workspace |
-| `sesh workspace list` | List all workspaces |
-| `sesh workspace show [workspace]` | Show workspace details and session status |
-| `sesh workspace spawn [workspace]` | Interactive session selection |
-| `sesh workspace spawn [workspace] --all` | Spawn all sessions without prompting |
-| `sesh workspace kill [workspace]` | Kill all sessions in workspace |
-| `sesh workspace delete [workspace]` | Delete workspace (asks to kill running sessions) |
-| `sesh workspace rename [old] [new]` | Rename a workspace |
+| Command                                             | Description                                      |
+| --------------------------------------------------- | ------------------------------------------------ |
+| `sesh workspace create [name] --description "desc"` | Create a new workspace                           |
+| `sesh workspace list`                               | List all workspaces                              |
+| `sesh workspace show [workspace]`                   | Show workspace details and session status        |
+| `sesh workspace spawn [workspace]`                  | Interactive session selection                    |
+| `sesh workspace spawn [workspace] --all`            | Spawn all sessions without prompting             |
+| `sesh workspace kill [workspace]`                   | Kill all sessions in workspace                   |
+| `sesh workspace delete [workspace]`                 | Delete workspace (asks to kill running sessions) |
+| `sesh workspace rename [old] [new]`                 | Rename a workspace                               |
 
 ### Diagnostics
 
-| Command | Description |
-|---------|-------------|
-| `sesh doctor` | Check config validation and tmux inconsistencies (colored output, exits 1 on issues) |
-| `sesh config validate` | Validate config file for errors and warnings |
-| `sesh completion [bash\|zsh\|fish\|powershell]` | Generate shell completion script |
+| Command                                         | Description                                                                          |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `sesh doctor`                                   | Check config validation and tmux inconsistencies (colored output, exits 1 on issues) |
+| `sesh config validate`                          | Validate config file for errors and warnings                                         |
+| `sesh completion [bash\|zsh\|fish\|powershell]` | Generate shell completion script                                                     |
 
 ### Configuration
 
-| Command | Description |
-|---------|-------------|
+| Command                             | Description                                                     |
+| ----------------------------------- | --------------------------------------------------------------- |
 | `sesh save --workspace [workspace]` | Save a new untracked tmux session into config (initial capture) |
-| `sesh save --dry-run` | Preview what `save` would do without writing |
-| `sesh sync [session]` | Update an existing config session to match current tmux state |
-| `sesh sync --all` | Update all running config sessions to match current tmux state |
-| `sesh sync --dry-run` | Preview what `sync` would update without writing |
-| `sesh delete [name] --dry-run` | Preview what `delete` would remove |
-| `sesh edit` | Open config in default editor |
-| `sesh config` | Show config file path |
+| `sesh save --dry-run`               | Preview what `save` would do without writing                    |
+| `sesh sync [session]`               | Update an existing config session to match current tmux state   |
+| `sesh sync --all`                   | Update all running config sessions to match current tmux state  |
+| `sesh sync --dry-run`               | Preview what `sync` would update without writing                |
+| `sesh delete [name] --dry-run`      | Preview what `delete` would remove                              |
+| `sesh edit`                         | Open config in default editor                                   |
+| `sesh config`                       | Show config file path                                           |
 
 **`save` vs `sync`:**
+
 - **`save`** — Use when you manually created a tmux session and want to add it to sesh config for the first time
 - **`sync`** — Use when a session already exists in config and you've made changes in tmux (new windows, panels, etc.) that you want reflected in the config
 - **Hooks** — Add tmux hooks to auto-run `sync` on window/pane changes (see Auto-Sync section below)
@@ -314,9 +319,9 @@ Working directory paths in config support `~`, `$HOME`, `${HOME}`, and other env
 ```yaml
 windows:
   - name: editor
-    workdir: ~/work/project        # expands to /home/user/work/project
+    workdir: ~/work/project # expands to /home/user/work/project
     panels:
-      - workdir: $HOME/projects     # expands using $HOME
+      - workdir: $HOME/projects # expands using $HOME
 ```
 
 ## Shell Completion
@@ -347,6 +352,7 @@ set-hook -g pane-exited 'run-shell "sesh sync #S > /dev/null 2>&1 || true"'
 ```
 
 **How it works:**
+
 - `#S` expands to the current session name
 - `sesh sync` introspects the running tmux state and updates the config file
 - `> /dev/null 2>&1 || true` suppresses output and prevents errors from blocking tmux
@@ -383,17 +389,17 @@ make lint       # Run fmt and vet
 
 ### Test Coverage
 
-| Package | Tests | Description |
-|---------|-------|-------------|
-| `internal/config` | 62 | Config CRUD, session/workspace management, move/rename/clone/window/panel/sync operations |
-| `internal/tmux` | 69 | Session lifecycle, introspection, query, client, command runner |
-| `internal/doctor` | 12 | Config/tmux mismatch detection, rename suggestions |
-| `internal/expand` | 7 | Path expansion (`~`, `$HOME`, env vars) |
-| `internal/output` | 6 | Output helpers (Info/Warn/Error) |
-| `internal/validate` | 11 | Config validation (duplicates, empty names, invalid layouts) |
-| `internal/editor` | 3 | Editor detection and configuration |
-| `internal/parser` | 6 | Window definition parsing |
-| `pkg/models` | 6 | Data structures and YAML marshaling |
+| Package             | Tests | Description                                                                               |
+| ------------------- | ----- | ----------------------------------------------------------------------------------------- |
+| `internal/config`   | 62    | Config CRUD, session/workspace management, move/rename/clone/window/panel/sync operations |
+| `internal/tmux`     | 69    | Session lifecycle, introspection, query, client, command runner                           |
+| `internal/doctor`   | 12    | Config/tmux mismatch detection, rename suggestions                                        |
+| `internal/expand`   | 7     | Path expansion (`~`, `$HOME`, env vars)                                                   |
+| `internal/output`   | 6     | Output helpers (Info/Warn/Error)                                                          |
+| `internal/validate` | 11    | Config validation (duplicates, empty names, invalid layouts)                              |
+| `internal/editor`   | 3     | Editor detection and configuration                                                        |
+| `internal/parser`   | 6     | Window definition parsing                                                                 |
+| `pkg/models`        | 6     | Data structures and YAML marshaling                                                       |
 
 ### Architecture
 
