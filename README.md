@@ -8,11 +8,18 @@
 
 ## Install
 
+From source:
+
 ```bash
 cd sesh && make install
 ```
 
-Or download a [release binary](https://github.com/gabsdotco/sesh/releases).
+From release:
+
+```bash
+curl -L -o sesh https://github.com/gabsdotco/sesh/releases/latest/download/sesh-darwin-arm64
+chmod +x sesh && sudo mv sesh /usr/local/bin/
+```
 
 ## Quick Start
 
@@ -26,7 +33,7 @@ sesh workspace spawn work
 
 | Command | Description |
 |---------|-------------|
-| `sesh create [name] -w [def]` | Create a session (`-w` flag: `name:panel_count`) |
+| `sesh create [name] -w [def]` | Create a session (`-w` accepts `name:count`) |
 | `sesh spawn [name]` | Spawn a session |
 | `sesh kill [name]` | Kill a session |
 | `sesh kill --all` | Kill all running sessions |
@@ -43,8 +50,10 @@ sesh workspace spawn work
 | `sesh workspace kill [ws]` | Kill workspace sessions |
 | `sesh workspace delete [ws]` | Delete workspace |
 | `sesh save` | Capture current tmux session into config |
+| `sesh save --dry-run` | Preview what save would do |
 | `sesh sync [name]` | Update config to match running tmux state |
 | `sesh sync --all` | Sync all running sessions |
+| `sesh sync --dry-run` | Preview what sync would update |
 | `sesh doctor` | Check config/tmux inconsistencies |
 | `sesh edit` | Edit config in $EDITOR |
 | `sesh config` | Show config path |
@@ -79,10 +88,19 @@ sessions:
 
 Working directories support `~`, `$HOME`, and `$VAR` expansion.
 
+## Auto-Sync
+
+Add to `~/.tmux.conf` to keep config in sync automatically:
+
+```bash
+set-hook -g after-new-window 'run-shell "sesh sync #S > /dev/null 2>&1 || true"'
+set-hook -g after-kill-pane 'run-shell "sesh sync #S > /dev/null 2>&1 || true"'
+```
+
 ## Development
 
 ```bash
-make test       # Run tests
+make test       # Run tests (183 tests)
 make lint       # Format and vet
 make release    # Build cross-platform binaries
 ```
