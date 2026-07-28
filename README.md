@@ -1,5 +1,5 @@
 <p align="center">
-セッション
+<strong>セッション</strong>
 </p>
 
 <p align="center">
