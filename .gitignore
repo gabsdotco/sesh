@@ -1,0 +1,32 @@
+# Build artifacts
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test artifacts
+*.test
+coverage.out
+coverage.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config (local user config, not project config)
+# Note: sessions.yaml is user-specific and should not be committed
+# If you want to include example configs, name them *.example.yaml
+sessions.yaml
+
+# Temporary files
+*.tmp
+*.bak
+*.log
