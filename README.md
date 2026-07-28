@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  Manage predefined TMUX sessions with workspaces, windows, and panels.
+  Manage predefined TMUX sessions with workspaces.
 </p>
 
 ## Install
