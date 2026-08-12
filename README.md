@@ -6,6 +6,10 @@
   Manage predefined TMUX sessions with workspaces.
 </p>
 
+<p align="center">
+  <img src="assets/screenshot.png" alt="sesh list output" width="700">
+</p>
+
 ## Install
 
 From source:
