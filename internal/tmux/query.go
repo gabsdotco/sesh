@@ -13,7 +13,8 @@ func (c *Client) IsTmuxRunning() bool {
 
 // SessionExists checks if a tmux session with the exact name exists
 func (c *Client) SessionExists(name string) bool {
-	return c.run("has-session", "-t", "="+name) == nil
+	_, err := c.runOutput("has-session", "-t", "="+name)
+	return err == nil
 }
 
 // GetCurrentSession returns the name of the current tmux session
