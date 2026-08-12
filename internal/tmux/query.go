@@ -8,7 +8,8 @@ import (
 
 // IsTmuxRunning checks if tmux server is running
 func (c *Client) IsTmuxRunning() bool {
-	return c.run("ls") == nil
+	_, err := c.runOutput("ls")
+	return err == nil
 }
 
 // SessionExists checks if a tmux session with the exact name exists
